@@ -55,8 +55,10 @@ export const useChatStore = create((set, get) => ({
     const { selectedUser } = get();
     if (!selectedUser) return;
     const socket = useAuthStore.getState().socket;
-    //to optimize later
+   
     socket.on("newMessage", (newMessage) => {
+      if(newMessage.senderId !== selectedUser._id) return; //this line of code prevents from emitting message to all users hence optimization
+
       set({ messages: [...get().messages, newMessage] });
     });
   },
