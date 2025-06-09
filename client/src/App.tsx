@@ -14,15 +14,15 @@ import { Loader } from "lucide-react";
 import { useThemeStore } from "./store/useThemeStore";
 
 const App = () => {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  //@ts-ignore
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
 //@ts-ignore
   const {theme} = useThemeStore();
   useEffect(() => {
     checkAuth();
   }, []);
+console.log(onlineUsers);
 
-
-  console.log({ authUser });
   if (isCheckingAuth && !authUser)
     return (
       <div className="flex items-center justify-center h-screen">

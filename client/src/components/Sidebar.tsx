@@ -10,8 +10,8 @@ const Sidebar = () => {
     useChatStore();
   //@ts-ignore
   const { onlineUsers } = useAuthStore();
+  console.log("online users form sidebar", onlineUsers)
 
-  console.log({ users });
   useEffect(() => {
     getUsers();
   }, [getUsers]);
