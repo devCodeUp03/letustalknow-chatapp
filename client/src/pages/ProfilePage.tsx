@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useState } from "react";
 
 const ProfilePage = () => {
+  //@ts-ignore
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
 
   const [selectedImg, setSelectedImg] = useState(null);

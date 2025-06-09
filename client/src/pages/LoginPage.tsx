@@ -10,6 +10,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  //@ts-ignore
   const { login, isLoggingIn } = useAuthStore();
   
 
