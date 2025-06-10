@@ -9,8 +9,6 @@ import { app, server } from "./lib/socket.js";
 import path from "path";
 dotenv.config();
 
-
-
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 app.use(express.json());
@@ -33,10 +31,18 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-
-
-server.listen(PORT, () => {
-  console.log("Server is running on port: " + PORT);
-  connectDB();
-});
+// server.listen(PORT, () => {
+//   console.log("Server is running on port: " + PORT);
+//   connectDB();
+// });
+connectDB()
+  .then(() => {
+    console.log("MongoDB connected successfully");
+    server.listen(PORT, () => {
+      console.log("Server is running on port: " + PORT);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to connect to DB", err);
+    process.exit(1); // Exit process if DB connection fails
+  });
