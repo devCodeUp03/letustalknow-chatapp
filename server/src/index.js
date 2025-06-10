@@ -9,6 +9,8 @@ import { app, server } from "./lib/socket.js";
 import path from "path";
 dotenv.config();
 
+
+
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 app.use(express.json());
@@ -30,6 +32,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
   });
 }
+
 
 
 
